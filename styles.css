@@ -1,0 +1,558 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Caveat', cursive;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('C70A7851_optimized.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center; /* Зміщуємо фото на 30% вверх */
+    background-position-y: center;
+    background-attachment: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(119, 133, 118, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 72px;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 32px;
+    margin-top: 15px;
+}
+
+.countdown {
+    margin-top: 25px;
+    font-size: 28px;
+}
+
+#timer {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 42px;
+    letter-spacing: 3px;
+}
+
+.countdown-text {
+    font-size: 24px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.scroll-btn {
+    background: rgba(227, 212, 189, 0.8);
+    color: #4b584a;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 30px;
+    font-size: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.scroll-btn:hover {
+    background: rgba(227, 212, 189, 1);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s forwards;
+}
+
+.delay { animation-delay: 0.6s; }
+.delay-more { animation-delay: 1.2s;  transition-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 48px; }
+    .hero-content p { font-size: 24px; }
+    #timer { font-size: 32px; }
+    .countdown-text { font-size: 18px; }
+}
+
+.our-story {
+    padding: 80px 20px;
+    background-color: rgb(119, 133, 118);
+    background-image: url('https://www.transparenttextures.com/patterns/dust.png');
+    color: #fff;
+}
+
+.story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: #3a4239;
+    text-shadow: 1px 2px 5px rgba(255, 255, 255, 0.9);
+    letter-spacing: 15px;
+}
+
+.story-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition-delay: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.story-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-content img {
+    max-width: 100%;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.story-content p {
+    font-size: 24px;
+    max-width: 500px;
+    text-align: left;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .story-content {
+        flex-direction: column;
+    }
+
+    .story-content p {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .story-content img {
+        width: 80%;
+    }
+
+    .section-title {
+        font-size: 32px;
+        letter-spacing: 10px;
+    }
+}
+
+/* Анімації */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay {
+    transition-delay: 0.3s;
+}
+
+@media (min-width:769px) {
+    .hero {       
+        background-position-y: -450px;
+    }
+}
+
+.event-details {
+    padding: 60px 20px;
+    background-color: rgb(181, 164, 146);
+    background-image: url('https://www.transparenttextures.com/patterns/dust.png');
+    color: #3a4239;
+    text-align: center;
+}
+
+/* Центруємо заголовок */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Основний контейнер для деталей */
+.details-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+/* Контейнер для текстових деталей */
+.details-info {
+    flex: 1;
+    text-align: left;
+}
+
+.details-item {
+    margin-bottom: 20px;
+}
+
+.details-item h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.details-item p, .details-item a {
+    font-size: 18px;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.details-item a:hover {
+    color: #778576;
+}
+
+/* Контейнер для мапи */
+.map-container {
+    flex: 1;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: none;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    .details-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .details-info {
+        text-align: center;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+}
+
+
+.timeline-section {
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, rgb(119, 133, 118), rgb(181, 164, 146)), 
+                url('https://www.transparenttextures.com/patterns/dust.png');
+    background-blend-mode: overlay;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+/* Контейнер таймлайну */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Вертикальна лінія по центру */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #fff;
+    transform: translateX(-50%);
+}
+
+/* Контейнер кожного блоку */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Ліві елементи */
+.timeline-item.left {
+    text-align: right;
+    padding-right: 50px;
+}
+
+/* Праві елементи */
+.timeline-item.right {
+    text-align: left;
+    padding-left: 50px;
+    left: 50%;
+}
+
+/* Контент подій */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    display: inline-block;
+    max-width: 90%;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+/* Час події */
+.timeline-time {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3a4239;
+    background: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ✅ ФІКС: На мобільних переносимо таймлайн вліво і рівняємо всі події */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px; /* Лінія тепер зліва */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item.right {
+        left: 0;
+        padding-left: 50px;
+    }
+
+    .timeline-content {
+        max-width: 85%;
+    }
+}
+
+.coordinator-section {
+    padding: 80px 20px;
+    background: rgb(119, 133, 118);
+    color: #fff;
+    text-align: center;
+}
+
+.coordinator-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-description {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #e3d4bd; /* Світлий текст для кращого контрасту */
+}
+
+.coordinator-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coordinator-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #e3d4bd; /* Світлий текст */
+}
+
+.coordinator-card p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.contact-button {
+    background: #e3d4bd;
+    color: #4b584a;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.contact-button:hover {
+    background: #d2baac;
+    color: #3a4239;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .coordinator-card {
+        padding: 20px;
+    }
+
+    .contact-description {
+        font-size: 18px;
+    }
+
+    .contact-button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+.footer {
+    background: linear-gradient(135deg, rgb(119, 133, 118), rgb(181, 164, 146));
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-text {
+    font-size: 22px;
+    font-style: italic;
+    margin-bottom: 8px;
+    color: #e3d4bd;
+}
+
+.footer-names {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f5e8d6;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .footer-names {
+        font-size: 16px;
+    }
+}
+
+.dresscode-section {
+    position: relative;
+    padding: 100px 20px;
+    background: url('C70A7895_optimized.webp') no-repeat center center / cover;
+    color: #fff;
+    text-align: center;
+}
+
+/* Затемнення фону для кращої читабельності */
+.dresscode-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Темний напівпрозорий шар */
+}
+
+.dresscode-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.dresscode-description {
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #f5e8d6;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.color-palette span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #fff;
+    transition: transform 0.3s;
+}
+
+.color-palette span:hover {
+    transform: scale(1.1);
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .dresscode-description {
+        font-size: 18px;
+    }
+
+    .color-palette span {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.light-border {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Світлий бордер, який пасує градієнтам */
+}
+
+/* Якщо секція має світлий фон, робимо бордер темнішим */
+.black-border {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2); /* Темний бордер для світлих секцій */
+}
+
+.ampersand {
+    margin: 0 10px;
+    color: rgb(119, 133, 118);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+}

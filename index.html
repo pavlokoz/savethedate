@@ -1,596 +1,146 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Весільне запрошення - Наталія & Павло</title>
-
-  <!-- Підключення сучасних шрифтів -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary: #A67C52;         /* пісочний */
-      --accent: #C68C53;          /* карамельний */
-      --pastel-green: #A8D5BA;    /* пастельно-зелений */
-      --bg-light: #F9F5EC;        /* молочний */
-      --overlay: rgba(249,245,236,0.8);
-      --transition: 0.35s ease;
-      --font-body: 'Inter', sans-serif;
-      --font-heading: 'Playfair Display', serif;
-      --font-script: 'Dancing Script', cursive;
-      --date-color: var(--pastel-green);
-    }
-
-    /* ===== Body Background with Animated Gradient & Noise Texture ===== */
-    body {
-      font-family: var(--font-body);
-      background: linear-gradient(135deg, #F9F5EC, #F7ECE0);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      color: var(--primary);
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      position: relative;
-    }
-    @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAJ0lEQVR42mNk+M+ACzDA0MWRgYGJiYkYiD4n7+5gYGRhEBADTRQK6FD4HiAAAAABJRU5ErkJggg==');
-      opacity: 0.15;
-      z-index: -1;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--accent);
-      transition: color var(--transition);
-    }
-    a:hover { color: #B3573C; }
-
-    /* ===== Header Section ===== */
-    header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      background: url('C70A7851.jpg') fixed center 40%/cover no-repeat;
-      display: flex;
-      align-items: flex-end; /* hero-content внизу (desktop) */
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      min-height: -webkit-fill-available;
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--overlay);
-      opacity: 0.5;
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 20px;
-      text-align: center;
-      font-family: var(--font-heading);
-      color: #fff;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
-      animation: fadeInUp 1.5s ease-out;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Заголовок \"Save the Date\" */
-    #header-title {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      color: #fff;
-      min-height: 60px;
-      display: inline-block;
-      border-bottom: 2px solid #fff;
-    }
-    .names {
-      font-family: var(--font-script);
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
-    }
-    .names .ampersand {
-      margin: 0 10px;
-      color: var(--accent);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-    header p {
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-    }
-    .countdown {
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: #fff;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
-    }
-
-    /* ===== Section Base Styles ===== */
-    section {
-      margin: 60px auto;
-      max-width: 1200px;
-      padding: 60px 40px;
-      background: #fff;
-      border-radius: 12px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      filter: blur(3px) saturate(0.8);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: filter 0.6s ease-out, opacity 0.6s ease-out, transform 0.6s ease-out;
-      position: relative;
-    }
-    section.visible {
-      filter: blur(0) saturate(1);
-      opacity: 1;
-      transform: translateY(0);
-    }
-    section h2 {
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-      color: var(--primary);
-    }
-    section h2::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    /* Дрібні декоративні іконки / візерунки у фоні секцій */
-    section::before {
-      content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbDpzYXBoaXJvb3Q9ImpjYmFzZTc1IHBsZWFzZSBub25lIG14IHBlb3BsZSBvdXRwb3QgdGVzdCI+PHBhdGggZmlsbD0iI2Y5ZjVmNSIgIGQ9Ik02MCAwYzMyLjI3NCAwIDYwIDI3LjcyNiA2MCA2MHMtMjcuNzI2IDYwLTYwIDYwcy02MC0yNy43MjYtNjAtNjAgMjcuNzI2LTYwIDYwLTYweiIgZmlsbC1vcGFjaXR5PSIwLjAyIi8+PC9zdmc+');
-      opacity: 0.03;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    /* Акцент для окремих ключових слів */
-    .highlight {
-      color: var(--accent);
-      font-style: italic;
-    }
-
-    /* ===== \"Наша історія\" Section ===== */
-    .our-story {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      background: linear-gradient(135deg, #F7EDE2, #FDF8F5);
-      border: 2px solid var(--accent);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .our-story .story-text {
-      font-size: 1.2rem;
-      color: var(--primary);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .our-story .story-image {
-      overflow: hidden;
-      order: 2;
-    }
-    .our-story .story-image img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform var(--transition), filter var(--transition);
-      object-fit: cover;
-      object-position: center;
-    }
-    .our-story .story-image img:hover {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
-    .our-story h2 { color: var(--accent); }
-
-    /* ===== \"Програма дня\" Section (Timeline) ===== */
-    .program {
-      background: linear-gradient(135deg, #FDF8F5, #F7EDE2);
-      border-left: 4px solid var(--accent);
-      border-right: 4px solid var(--accent);
-      position: relative;
-      padding: 60px 20px;
-    }
-    .program h2 { color: var(--primary); }
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px 0;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 100%;
-      background: var(--accent);
-    }
-    .timeline-event {
-      position: relative;
-      width: 50%;
-      padding: 20px 30px;
-      box-sizing: border-box;
-      opacity: 0;
-      transform: translateX(20px);
-    }
-    .timeline-event.visible:nth-child(odd) {
-      animation: fadeInRight 0.6s ease-out forwards;
-    }
-    .timeline-event.visible:nth-child(even) {
-      animation: fadeInLeft 0.6s ease-out forwards;
-    }
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(-20px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(20px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    .timeline-event:nth-child(odd) { left: 0; text-align: right; }
-    .timeline-event:nth-child(even) { left: 50%; text-align: left; }
-    .timeline-event::before {
-      content: "";
-      position: absolute;
-      top: 20px;
-      width: 20px;
-      height: 20px;
-      background: var(--accent);
-      border-radius: 50%;
-      border: 4px solid #fff;
-      z-index: 1;
-    }
-    .timeline-event:nth-child(odd)::before { right: -10px; }
-    .timeline-event:nth-child(even)::before { left: -10px; }
-    .timeline-event h3 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-    .timeline-event p {
-      font-size: 1.1rem;
-      color: var(--primary);
-    }
-
-    /* ===== Divider Images with Enhanced Size and NO Hover Effects ===== */
-    .divider {
-      width: 100%;
-      height: 400px;
-      background-size: cover;
-      background-position: center top;
-      background-attachment: fixed;
-      margin: 60px 0;
-      position: relative;
-      animation: fadeInZoom 1s ease-out;
-      overflow: hidden;
-      background-position-y: 25%;
-    }
-    @keyframes fadeInZoom {
-      from { opacity: 0; transform: scale(0.95); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    .divider::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(249,245,236,0.3), rgba(249,245,236,0.6));
-      pointer-events: none;
-    }
-    .divider:nth-of-type(3) {
-      background-image: url('C70A7789.jpg');
-    }
-    .divider .caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      color: var(--primary);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      animation: fadeIn 1s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* ===== Footer (optional) ===== */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 1rem;
-      color: var(--primary);
-      font-style: italic;
-      font-family: var(--font-heading);
-    }
-    footer::before {
-      content: "";
-      display: block;
-      width: 50px;
-      height: 2px;
-      background: var(--accent);
-      margin: 0 auto 10px;
-      border-radius: 2px;
-    }
-
-    /* ===== \"Локація\" Section ===== */
-    .location {
-      background: linear-gradient(135deg, #FDF8F5, #F7EDE2);
-      border: 2px solid var(--accent);
-      padding: 60px 40px;
-      border-radius: 16px;
-      margin-bottom: 60px;
-    }
-    .location-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .location-info {
-      flex: 1;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .location-info p {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-    .map-wrapper {
-      flex: 1;
-      min-width: 300px;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform var(--transition), filter var(--transition);
-    }
-    .map-wrapper iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    .map-wrapper:hover {
-      transform: scale(1.02);
-      filter: brightness(1.05);
-    }
-    .location h2 {
-      color: var(--primary);
-      text-align: center;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .our-story .story-text p {
-        font-family: var(--font-script);
-    }
-    .our-story .story-text h2 {
-        font-family: var(--font-heading);
-        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-    }
-    /* Оновлені дані для Google Maps iframe і new link адреси */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the date</title>
+    <!-- Підключення Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
+
+<section class="hero">
+    <div class="overlay"></div>
     <div class="hero-content">
-      <h1 id="header-title"></h1>
-      <div class="names">
-        Наталія <span class="ampersand">&amp;</span> Павло
-      </div>
-      <p>25.05.2025</p>
-      <div class="countdown" id="countdown">79:13:41:20</div>
+        <h1 class="fade-in">Наталія <span class="ampersand">&amp;</span> Павло</h1>
+        <p class="fade-in delay">25.05.2025 | 14:00</p>
+
+        <div class="countdown fade-in delay-more">
+            <div id="timer">00:00:00:00</div>
+            <div class="countdown-text">...і ми будемо одружені!</div>
+        </div>
+
+        <button class="scroll-btn fade-in delay-more">Дізнатися більше ↓</button>
     </div>
-  </header>
+</section>
 
-  <!-- Divider 1 -->
-  <div class="divider" style="background-image: url('C70A7895.jpg');">
-    <div class="caption">Незабутні миті</div>
-  </div>
-
-  <!-- Our Story Section -->
-  <section class="our-story fade-in" id="our-story">
-    <div class="story-text">
-      <h2>​ДВІ СПОРІДНЕНІ ДУШІ</h2>
-      <p>
-        Цей день настав. З радістю запрошуємо вас розділити з нами один з найважливіших моментів нашого життя.
-        В цей день буде створена нова <strong class="highlight">сім'я</strong>. Ми запрошуємо вас на виїздну церемонію та святковий бенкет. 
-      </p>
+<section class="our-story light-border">
+    <div class="story-container">
+        <h2 class="section-title fade-up">Дві Споріднені Душі</h2>
+        <div class="story-content fade-up delay">
+            <img src="C70A7930_optimized.webp" alt="Наталія & Павло" class="story-photo">
+            <p>
+                Цей день настав. З радістю запрошуємо вас розділити з нами один з найважливіших моментів нашого життя.
+                В цей день буде створена нова сім'я. Ми запрошуємо вас на виїздну церемонію та святковий бенкет.
+            </p>
+        </div>
     </div>
-    <div class="story-image">
-      <img src="C70A7930.jpg" alt="Наша історія" class="image-hover">
-    </div>
-  </section>
+</section>
 
-  <!-- Divider 2 -->
-  <div class="divider" style="background-image: url('C70A7763.jpg');">
-    <div class="caption">Моменти, що запам'ятовуються</div>
-  </div>
+<section class="timeline-section black-border">
+    <h2 class="section-title fade-up">Програма дня</h2>
 
-  <!-- Program Section (Timeline) -->
-  <section class="program fade-in" id="program">
-    <h2>Програма дня</h2>
     <div class="timeline">
-      <div class="timeline-event fade-in">
-        <h3>14:00</h3>
-        <p>Церемонія</p>
-      </div>
-      <div class="timeline-event fade-in">
-        <h3>15:00</h3>
-        <p>Святковий бенкет</p>
-      </div>
-      <div class="timeline-event fade-in">
-        <h3>18:00</h3>
-        <p>Перший танець</p>
-      </div>
-      <div class="timeline-event fade-in">
-        <h3>22:00</h3>
-        <p>Закінчення вечора</p>
-      </div>
+        <div class="timeline-item left fade-up">
+            <div class="timeline-content">
+                <span class="timeline-time">14:00</span>
+                <h3>Церемонія</h3>
+                <p>Офіційне свято починається з урочистої церемонії.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right fade-up delay">
+            <div class="timeline-content">
+                <span class="timeline-time">15:00</span>
+                <h3>Святковий бенкет</h3>
+                <p>Смачні страви, теплі тости та святкова атмосфера.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left fade-up delay-more">
+            <div class="timeline-content">
+                <span class="timeline-time">18:00</span>
+                <h3>Перший танець</h3>
+                <p>Романтичний момент, який запам'ятається назавжди.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right fade-up delay-extra">
+            <div class="timeline-content">
+                <span class="timeline-time">22:00</span>
+                <h3>Закінчення вечора</h3>
+                <p>Дякуємо, що розділили цей день з нами!</p>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Divider 3 (C70A7789) -->
-  <div class="divider" style="background-image: url('C70A7753.jpg'); background-position-y: 40%;">
-    <div class="caption">Місце, де оживає мрія</div>
-  </div>
+<section class="event-details">
+    <h2 class="section-title fade-up">Деталі події</h2>
 
-  <!-- Location Section -->
-  <section class="location fade-in" id="location">
-    <h2>Місце події</h2>
-    <div class="location-container">
-      <!-- Left column: текстова інформація -->
-      <div class="location-info">
-        <p>
-          <strong>Локація:</strong>
-          <a href="https://www.instagram.com/levels.te" target="_blank">
-            Levels.te
-          </a>
-        </p>
-        <p>
-          <strong>Адреса:</strong>
-          <a href="https://maps.app.goo.gl/j6oXMLeekZuCQXxAA" target="_blank">
-            49°34'05.6, N 25°, 30'30, 7\"E<br />
-            Ternopil, Ternopil Oblast, 46000
-          </a>
-        </p>
-        <p><strong>Час:</strong> 14:00</p>
-      </div>
+    <div class="details-container fade-up">
+        <div class="details-info">
+            <div class="details-item">
+                <h3>Місце проведення</h3>
+                <p><a href="https://www.instagram.com/levels.te" target="_blank">Levels.te</a></p>
+            </div>
 
-      <!-- Right column: google map -->
-      <div class="map-wrapper">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2587.562277250443!2d25.5087151!3d49.56828180000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473037d24a270ba1%3A0xacbb0c5c45091b85!2sLevels.te!5e0!3m2!1sen!2sua!4v1741357911949!5m2!1sen!2sua"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+            <div class="details-item">
+                <h3>Дата та час</h3>
+                <p>25.05.2025 о 14:00</p>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2587.562277250443!2d25.5087151!3d49.56828180000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473037d24a270ba1%3A0xacbb0c5c45091b85!2sLevels.te!5e0!3m2!1sen!2sua!4v1741632441157!5m2!1sen!2sua"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
-  </section>
+</section>
 
-  <div class="footer-space"></div>
 
-  <!-- Footer -->
-  <footer>
-    З любов'ю, Наталія & Павло<br />
-    <small>Дякуємо, що розділяєте наше свято!</small>
-  </footer>
+<section class="dresscode-section">
+    <div class="overlay"></div>
+    <div class="dresscode-container fade-up">
+        <h2 class="section-title">Dress-code</h2>
+        <p class="dresscode-description">
+            Будемо вдячні, якщо ви підтримаєте кольорову гаму нашого свята.
+        </p>
+        <div class="color-palette">
+            <span style="background-color: rgb(119, 133, 118);" title="#778576"></span>
+            <span style="background-color: rgb(181, 164, 146);" title="#B5A492"></span>
+            <span style="background-color: rgb(210, 186, 172);" title="#D2BAAC"></span>
+            <span style="background-color: rgb(227, 212, 189);" title="#E3D4BD"></span>
+        </div>
+    </div>
+</section>
 
-  <script>
-    /* Typing effect for header title */
-    const headerTitle = document.getElementById("header-title");
-    const headerText = "Save the Date";
-    let index = 0;
-    function typeTitle() {
-      if (index < headerText.length) {
-        headerTitle.innerHTML += headerText.charAt(index);
-        index++;
-        setTimeout(typeTitle, 100);
-      }
-    }
-    typeTitle();
+<section class="coordinator-section black-border">
+    <div class="coordinator-container fade-up">
+        <h2 class="section-title">Контакти</h2>
 
-    /* Динамічний таймер */
-    const targetOffset =
-      79 * 24 * 60 * 60 * 1000 +
-      13 * 60 * 60 * 1000 +
-      41 * 60 * 1000 +
-      20 * 1000;
-    let targetTime = new Date().getTime() + targetOffset;
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetTime - now;
-      if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "Подія вже відбулась!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("countdown").innerHTML =
-        days +
-        ":" +
-        hours.toString().padStart(2, "0") +
-        ":" +
-        minutes.toString().padStart(2, "0") +
-        ":" +
-        seconds.toString().padStart(2, "0");
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        <p class="contact-description">
+            На випадок, якщо у вас є бажання зробити для нас сюрприз, 
+            ви можете надіслати всі деталі цій людині 
+        </p>
 
-    /* Scroll reveal using IntersectionObserver */
-    const faders = document.querySelectorAll(".fade-in");
-    const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    faders.forEach((fader) => appearOnScroll.observe(fader));
-  </script>
+        <div class="coordinator-card">
+            <h3>Координатор</h3>
+            <p>Саша</p>
+            <a href="https://www.instagram.com/oleksandra.zubkova" target="_blank" class="contact-button">
+                Написати
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p class="footer-text">З нетерпінням чекаємо на вас у цей особливий день! 🌿</p>
+    <p class="footer-names">Наталія & Павло • 25.05.2025</p>
+</footer>
+
+
+<script src="script.js"></script>
 </body>
 </html>
