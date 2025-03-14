@@ -47,7 +47,7 @@ document.addEventListener('scroll', function() {
 
 // Прокрутка вниз
 document.querySelector('.scroll-btn').addEventListener('click', function() {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    document.querySelector('.our-story').scrollIntoView({ behavior: 'smooth' });
 });
 
 // Функція для анімації при скролі

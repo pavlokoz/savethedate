@@ -44,13 +44,13 @@ html, body {
 }
 
 .hero-content p {
-    font-size: 32px;
+    font-size: 36px;
     margin-top: 15px;
 }
 
 .countdown {
     margin-top: 25px;
-    font-size: 28px;
+    font-size: 32px;
 }
 
 #timer {
@@ -61,7 +61,7 @@ html, body {
 }
 
 .countdown-text {
-    font-size: 24px;
+    font-size: 28px;
     margin-top: 10px;
     font-style: italic;
 }
@@ -96,10 +96,10 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    .hero-content h1 { font-size: 48px; }
-    .hero-content p { font-size: 24px; }
-    #timer { font-size: 32px; }
-    .countdown-text { font-size: 18px; }
+    .hero-content h1 { font-size: 50px; }
+    .hero-content p { font-size: 28px; }
+    #timer { font-size: 38px; }
+    .countdown-text { font-size: 28px; }
 }
 
 .our-story {
@@ -119,7 +119,7 @@ html, body {
     font-family: 'Great Vibes', cursive;
     font-size: 40px;
     margin-bottom: 40px;
-    color: #3a4239;
+    color: #222e2b;
     text-shadow: 1px 2px 5px rgba(255, 255, 255, 0.9);
     letter-spacing: 15px;
 }
@@ -148,7 +148,7 @@ html, body {
 }
 
 .story-content p {
-    font-size: 24px;
+    font-size: 32px;
     max-width: 500px;
     text-align: left;
 }
@@ -161,7 +161,7 @@ html, body {
 
     .story-content p {
         text-align: center;
-        font-size: 20px;
+        font-size: 28px;
     }
 
     .story-content img {
@@ -231,12 +231,12 @@ html, body {
 }
 
 .details-item h3 {
-    font-size: 22px;
+    font-size: 32px;
     margin-bottom: 5px;
 }
 
 .details-item p, .details-item a {
-    font-size: 18px;
+    font-size: 28px;
     color: inherit;
     text-decoration: none;
     transition: color 0.3s;
@@ -273,6 +273,14 @@ html, body {
     .map-container iframe {
         height: 300px;
     }
+
+    .details-item h3 {
+        font-size: 28px;
+    }
+    
+    .details-item p, .details-item a {
+        font-size: 24px;
+    }
 }
 
 
@@ -299,6 +307,14 @@ html, body {
 .timeline-section * {
     position: relative;
     z-index: 1;
+}
+
+.timeline-section .timeline-content h3 {
+    font-size: 32px;
+}
+
+.timeline-section .timeline-content p {
+    font-size: 28px;
 }
 
 
@@ -387,6 +403,14 @@ html, body {
     .timeline-content {
         max-width: 85%;
     }
+
+    .timeline-section .timeline-content h3 {
+        font-size: 28px;
+    }
+
+    .timeline-section .timeline-content p {
+        font-size: 24px;
+    }
 }
 
 .coordinator-section {
@@ -402,7 +426,7 @@ html, body {
 }
 
 .contact-description {
-    font-size: 20px;
+    font-size: 28px;
     margin-bottom: 30px;
     font-style: italic;
     color: #e3d4bd; /* Світлий текст для кращого контрасту */
@@ -454,7 +478,7 @@ html, body {
     }
 
     .contact-description {
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .contact-button {
@@ -464,21 +488,21 @@ html, body {
 }
 
 .footer {
-    background: linear-gradient(135deg, rgb(119, 133, 118), rgb(181, 164, 146));
+    background: linear-gradient(to bottom, rgb(119, 133, 118), rgb(181, 164, 146));
     color: #fff;
     text-align: center;
     padding: 40px 20px;
 }
 
 .footer-text {
-    font-size: 22px;
+    font-size: 28px;
     font-style: italic;
     margin-bottom: 8px;
     color: #e3d4bd;
 }
 
 .footer-names {
-    font-size: 20px;
+    font-size: 32px;
     font-weight: bold;
     color: #f5e8d6;
 }
@@ -486,11 +510,11 @@ html, body {
 /* Адаптивність */
 @media (max-width: 768px) {
     .footer-text {
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .footer-names {
-        font-size: 16px;
+        font-size: 28px;
     }
 }
 
@@ -521,7 +545,7 @@ html, body {
 }
 
 .dresscode-description {
-    font-size: 22px;
+    font-size: 28px;
     margin-bottom: 30px;
     font-style: italic;
     color: #f5e8d6;
@@ -549,7 +573,7 @@ html, body {
 /* Адаптивність */
 @media (max-width: 768px) {
     .dresscode-description {
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .color-palette span {
@@ -570,5 +594,5 @@ html, body {
 .ampersand {
     margin: 0 10px;
     color: rgb(119, 133, 118);
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 3px 3px 8px #fff;
 }
